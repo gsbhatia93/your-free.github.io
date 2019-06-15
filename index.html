@@ -1,49 +1,223 @@
-
+<!Doctype html>
 <html>
 
-<head>
+	<head>
+		<meta charset='utf-8'>
+		<meta name='viewport' content='width=device-width, initial-scale=1'>
+		<title> Gurpreet Singh</title>
+		<!-- development version, includes helpful console warnings -->
+		
 
-<!-- development version, includes helpful console warnings -->
-<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-
-
-</head>
-
-<body>
-
-	<div id="app">
-	  {{ message }}
-	</div>
-
-Gurpreet Singh Bhatia
-
-CV
-
-Projects 
-I have done
-
-Personal 
-Born and brought up in Delhi, India. Gurpreet completed his bachelors from GGSIPU where he majored in Information Technology. After working in startup for a few months after graduation, he moved to Sapient Consulting where he worked to provide software solutions to clients in financial domian. There he was also introduced to intricacies of finance/ market economics.
-
-Finally, he moved to work as a research associate with Prof. PK. As an RA he worked towards modelling and evaluating social-technical systems like Twitter and Stack overflow.
-
-<img>
-
-	
-
-</body>
-<script src="vue_js.js"></script>
-
-<!-- 
-Comments regarding course waiver
-
-For the 539 waiver you will be required to provide a link to a self-coded website. Sites should be a minimum of three pages. Note that frameworks (Bootstrap, React, etc) are ok, but not templates (Google Site, Wix, etc.) You need to have written the HTML and a large portion of the CSS yourself.
-
-You will be required to validate your code validator.w3.org, Wave (http://wave.webaim.org/), and Axe (https://www.deque.com/axe/). If there are any errors (warnings are ignored) you are expected to justify them and describe steps taken to fix them.
-
-You will be required to provide a link to a zipped archive with all of the following: your code, screenshots of each page being checked by WebAim, screenshots of each page being checked by Axe and explanations of any accessibility errors.
-
- -->
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
 
+		<link rel='stylesheet', href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css'>
+
+		<link rel="stylesheet" href="mystyle.css">
+		
+		<!-- Jquery Lib -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+		<!-- javascript lib -->
+		<script src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js'></script>
+
+		<!-- make website responsive to mobile and rescalling -->
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		
+
+	</head>
+
+	<body>
+		<header>
+			<h1>Gurpreet Singh Bhatia</h1>
+			<!-- <h2> Social Computing Researcher</h2> -->
+		</header>
+		<main class="description">
+			<p> Computational Social Science </p>
+		</main>
+			<div class="section" id="main_div">
+				
+				<div class="column" id="nav-div">
+					<nav class="navbar navbar-expand-lg navbar-light bg-light">
+			  
+					  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+					    <span class="navbar-toggler-icon"></span>
+					  </button>
+					  <div class="collapse navbar-collapse" id="navbarNav">
+					    <ul class="navbar-nav">
+					      <div class="btn-group" id="btnGrp">
+
+						      <li class="nav-item">
+								<button type="button" class="btn active" 
+									onclick="loadHome('block','none','none','none','none')">Home
+								</button>
+						      </li>
+						      <li class="nav-item">
+						        <button type="button" class="btn " 
+									onclick="loadHome('none','block','none','none','none')">CV
+								</button>
+						      </li>
+						      <li class="nav-item">
+						        <button type="button" class="btn " 
+									onclick="loadHome('none','none','block','none','none')">Projects
+								</button>
+						      </li>
+						      <li class="nav-item">
+						        <button type="button" class="btn " 
+									onclick="loadHome('none','none','none','block','none')">Contact
+								</button>
+						      </li>
+						      <li class="nav-item">
+						        <button type="button" class="btn" 
+									onclick="loadHome('none','none','none','none','block')">Bio
+								</button>
+						      </li>
+					  		</div>
+					    </ul>
+					  </div>
+					</nav>			
+				
+				</div> <!-- nav-div -->
+
+				<div class="column" id="content">
+					<div style="display:inline-block;" id="home">
+						
+					</div>
+					<div style="display:none;" id="cv">
+						<p id='cv-date'>Last update Jan 2019</p>
+						<a id='cv-new-tab' href="assets/CV_2018_GPA_4_scale.pdf" target="_blank">CV</a>
+						<embed id='cv-file' src="assets/CV_2018_GPA_4_scale.pdf" width="100%" height="1900px" />
+					</div>
+					<div class='row' style="display:none;" id="projects">
+
+						<div class=' jumbotron pro-jumbo'><h5> Troll Detection </h5>
+							Presently working to develop a cross-platform computational model to detect trolls in online communities using low level textual features and changes in network characteristics in the event of trolling.
+						</div>
+						<div class='jumbotron pro-jumbo' ><h5>Digital Signals on Stack Overflow</h5>
+							Our work focussed on understanding what virtual rewards signal about the social qualities of users on Stack Overflow.
+							<br>
+							Short Paper, The Web Conference 2019 (WWW)
+
+						</div>
+						<div class='jumbotron pro-jumbo' ><h5>Spam Campaign Characterization</h5>
+						Studied technical support spams which advertise phone numbers on social media platforms by analyzing over 23 million tweets to differentiate spam and legitimate. <br> Submitted as Journal Paper to WebScience 2019
+					</div>
+						
+					</div>
+					<div style="display:none;"  id="contact">
+						<ul>
+							<li>	
+								<h5>Email</h5>
+								<div class="row" id="email">
+									<div class="col-sm-3">
+										<h6> gsbhatia93@gmail.com</h6>
+									</div>
+									<div class="col-sm-3">
+										<h6> gsbhatia@umich.edu</h6>
+									</div>
+								
+							</li>
+							<li>
+								<h5>Phone</h5>
+								<h6>+91 9650613067</h6>
+							</li>
+						</ul>
+					</div>
+					<div style="display:none;" id='bio'>	
+					</div>
+
+				</div><!-- content-div -->
+
+				<div class="row" id="image_jumbo">
+					<div id='image_holder'>
+							<img src="assets/myphoto.jpg" class="img-responsive" >
+					</div>	
+					<div class='jumbotron' id='jumbo' >
+							<h4 id="jumbo_heading"> Research Associate @Precog, IIIT-Delhi</h4>	
+							<p id='jumbo_content'> I work in social computing where I model and evaluate socio-technical systems like Twitter and Stackoverflow.</p>
+					</div>
+
+				</div>	
+				<div class="column" id="news-table">		
+					<table class="table table-striped">
+					    <thead>
+					      <tr>
+					        <th>Updates</th>
+					      </tr>
+					    </thead>
+					    <tbody>
+					      <tr>
+					        <td>Staring Graduate Program At Umich, School of Information in August 2019</td>
+					      </tr>
+					      <tr>
+					        <td>UM MSI ACCEPTANCE</td>
+					      </tr>
+					      <tr>
+					        <td>WWW short paper acceptance</td>
+					      </tr>
+					    </tbody>
+					</table>
+				</div>
+
+			</div> <!-- main-div -->
+								
+	<!-- 
+	Comments regarding course waiver
+
+	For the 539 waiver you will be required to provide a link to a self-coded website. Sites should be a minimum of three pages. Note that frameworks (Bootstrap, React, etc) are ok, but not templates (Google Site, Wix, etc.) You need to have written the HTML and a large portion of the CSS yourself.
+
+	You will be required to validate your code validator.w3.org, Wave (http://wave.webaim.org/), and Axe (https://www.deque.com/axe/). If there are any errors (warnings are ignored) you are expected to justify them and describe steps taken to fix them.
+
+	You will be required to provide a link to a zipped archive with all of the following: your code, screenshots of each page being checked by WebAim, screenshots of each page being checked by Axe and explanations of any accessibility errors.
+
+data-toggle="buttons"
+	 -->
+
+	</body>
+	<footer class="footer">
+		Made by Gurpreet. Last updated <time>13 June 2019</time>
+	</footer>
+	<script src='addBio.js'></script>
+	<script type="text/javascript">
+
+			function changeColor(){
+				console.log('changes color of active button')
+				var header = document.getElementById("btnGrp");
+				var btns = header.getElementsByClassName("btn");
+				console.log(header)
+				console.log(btns)
+				for (var i = 0; i < btns.length; i++) {
+				  btns[i].addEventListener("click", function() {
+				  var current = document.getElementsByClassName("active");
+				  current[0].className = current[0].className.replace(" active", "");
+				  this.className += " active";
+				  });
+				}
+			}
+
+			function loadHome(home,cv, projects,contact, bio){
+				document.getElementById('home').style.display = home;
+				document.getElementById('cv').style.display = cv;
+				document.getElementById('projects').style.display = projects;
+				document.getElementById('contact').style.display = contact;
+				document.getElementById('bio').style.display = bio;
+				
+				changeColor()
+				if(home=='block'){
+					addHome()
+				}
+				if(cv=='block'){
+					addCV()
+				}
+				if(bio=='block'){
+					addBio()
+				}
+				if(projects=='block'){
+					addProjects()
+				}
+				if(contact=='block'){
+					addContacts()
+				}
+			}	
+	</script>
 </html>
