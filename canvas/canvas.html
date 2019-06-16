@@ -1,0 +1,59 @@
+<!-- canvas.html -->
+</!DOCTYPE html>
+<html>
+<head>
+	<title> canvas for drawing</title>
+	<link rel="stylesheet" href="style_canvas.css">
+</head>
+<body>
+	<h1 id='demo'>canvas</h1>
+	<canvas id="myCanvas" style="border:1px solid #d3d3d3;" onmousemove="myFunction(event)">	Your browser does not support the HTML5 canvas tag.
+	</canvas>
+
+<script>
+myCanvas.width = 1024;
+myCanvas.height = 1024;
+// To set the display size use the style width and height
+myCanvas.style.width = "80%"; // Note you must post fix the unit type %,px,em
+myCanvas.style.height = "80%";
+
+const mouse = {
+    x : 0, y : 0,  // coordinates
+    lastX : 0, lastY : 0, // last frames mouse position 
+    b1 : false, b2 : false, b3 : false, // buttons
+    buttonNames : ["b1","b2","b3"],  // named buttons
+}
+
+function myFunction(e) {
+	  var x = e.clientX;
+	  var y = e.clientY;
+	  var coor = "Coordinates: (" + x + "," + y + ")";
+	  document.getElementById("demo").innerHTML = coor;
+      
+      var canvas = document.getElementById("myCanvas");
+	  var ctx = canvas.getContext("2d");
+	  
+	  var bounds = canvas.getBoundingClientRect();
+      mouse.x = e.pageX - bounds.left - scrollX;
+      mouse.y = e.pageY - bounds.top - scrollY;
+	  mouse.x /=  bounds.width; 
+      mouse.y /=  bounds.height; 
+  	  mouse.x *= canvas.width;
+  	  mouse.y *= canvas.height;
+	
+	  ctx.fillStyle = "#FF0000";
+	  ctx.beginPath();
+	  ctx.arc(mouse.x, mouse.y, 1, 0, 2 * Math.PI);
+	  ctx.stroke();
+
+		 
+}
+
+	function clearCoor() {
+	  document.getElementById("demo").innerHTML = "";
+	}
+</script>
+</body>
+
+
+</html>
