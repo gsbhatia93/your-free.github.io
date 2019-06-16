@@ -41,7 +41,19 @@ html{
 		display:none;
 	}
 }
+@media screen and (max-width: 1365px){
+	.pro-jumbo{
+		display: block;
+		background-color: #b7eaeb;
+		width:50em;
+		height:15em;
+		margin-left:-1em;
+		margin-right:4em;
+		float:none;
+	}
 
+
+}
 /*@media screen and (min-width: 520px ) and (max-width: */
 /*small window code*/
 @media screen and (max-width: 889px){
@@ -51,6 +63,17 @@ html{
 		width: 15em;
 		height: 15em
 	}
+	.pro-jumbo{
+		display: block;
+		background-color:#efe8c3;
+		width:19em;
+		height:20em;
+		margin-left:-1em;
+		margin-right:4em;
+		float:none;
+
+	}
+
 	.jumbotron h3{
 		font-size: 1.5em;
 	}
@@ -75,19 +98,7 @@ html{
 		display:none;
 	}
 }
-@media screen and (max-width: 1365px){
-	.pro-jumbo{
-		display: block;
-		background-color: #b7eaeb;
-		width:19em;
-		height:20em;
-		margin-left:-1em;
-		margin-right:4em;
-		float:none;
-	}
 
-
-}
 .btn {
   border: none;
   outline: none;
