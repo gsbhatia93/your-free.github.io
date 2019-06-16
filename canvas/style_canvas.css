@@ -6,7 +6,9 @@
    width:80%;
    height:80%;
 }
-
+#mouse{
+	display:inline-block;
+}
 .rectangle {
   height: 30px;
   width: 30px;

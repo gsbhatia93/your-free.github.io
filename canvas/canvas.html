@@ -6,16 +6,19 @@
 	<link rel="stylesheet" href="style_canvas.css">
 </head>
 <body>
-	<h1 id='demo'>canvas</h1>
+	<div class='row'>
+		<h1 id='demo'>canvas</h1>
+	</div>
 	<canvas id="myCanvas" style="border:1px solid #d3d3d3;" onmousemove="myFunction(event)" >	Your browser does not support the HTML5 canvas tag.
 	</canvas>
 	<!-- <div id='mouse'>mouse</div> -->
-	<div class="rectangle" id='mouse'></div>
+	
 	
 		<br>
   		Select your favorite color:
   		<input id="new-color-value" type="color" name="favcolor" value="#ff0000" >
   		<button onclick="colorSelectorFunction()">Submit</button>
+		<div class="rectangle" id='mouse'></div>
 	
 <script>
 var canvas = document.getElementById("myCanvas");
