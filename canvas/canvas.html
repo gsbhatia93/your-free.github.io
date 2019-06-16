@@ -7,15 +7,48 @@
 </head>
 <body>
 	<h1 id='demo'>canvas</h1>
-	<canvas id="myCanvas" style="border:1px solid #d3d3d3;" onmousemove="myFunction(event)">	Your browser does not support the HTML5 canvas tag.
+	<canvas id="myCanvas" style="border:1px solid #d3d3d3;" onmousemove="myFunction(event)" >	Your browser does not support the HTML5 canvas tag.
 	</canvas>
-
+	<!-- <div id='mouse'>mouse</div> -->
+	<div class="rectangle" id='mouse'></div>
+	
+		<br>
+  		Select your favorite color:
+  		<input id="new-color-value" type="color" name="favcolor" value="#ff0000" >
+  		<button onclick="colorSelectorFunction()">Submit</button>
+	
 <script>
+console.log('--loading again...')	
+var canvas = document.getElementById("myCanvas");
+
+// Prevent scrolling when touching the canvas
+document.body.addEventListener("touchstart", function (e) {
+  console.log('touch event')	
+}, false);
+
+document.body.addEventListener("touchend", function (e) {
+	console.log('touch end')
+}, false);
+document.body.addEventListener("touchmove", function (e) {
+	//  var rect = canvas.getBoundingClientRect();
+    //x = e.touches[0].clientX - rect.left,
+    //y = e.touches[0].clientY - rect.top
+    //drawFunction(x,y)
+    touchFunction(e)
+  console.log('touch move')
+}, false);
+
+document.addEventListener('keydown', keyFunction);
+
+function colorSelectorFunction(){
+	var value = document.getElementById('new-color-value').value
+	console.log(value)
+	
+}
+strokeColor="#FF0000"
+penDown = true
 myCanvas.width = 1024;
 myCanvas.height = 1024;
-// To set the display size use the style width and height
-myCanvas.style.width = "80%"; // Note you must post fix the unit type %,px,em
-myCanvas.style.height = "80%";
 
 const mouse = {
     x : 0, y : 0,  // coordinates
@@ -23,34 +56,97 @@ const mouse = {
     b1 : false, b2 : false, b3 : false, // buttons
     buttonNames : ["b1","b2","b3"],  // named buttons
 }
+	function touchFunction(e){
+		var x = e.touches[0].clientX;
+	   var y = e.touches[0].clientY;
 
-function myFunction(e) {
+	   var bounds = canvas.getBoundingClientRect();
+      mouse_x = x - bounds.left - scrollX;		
+      mouse_y = y - bounds.top - scrollY;
+	  mouse_x /=  bounds.width; 
+      mouse_y /=  bounds.height; 
+   
+  	  mouse_x *= canvas.width;
+  	  mouse_y *= canvas.height;
+
+	  
+	 drawFunction(mouse_x,mouse_y,x,y)
+	}
+	function myFunction(e) {
+		
 	  var x = e.clientX;
 	  var y = e.clientY;
 	  var coor = "Coordinates: (" + x + "," + y + ")";
 	  document.getElementById("demo").innerHTML = coor;
       
-      var canvas = document.getElementById("myCanvas");
-	  var ctx = canvas.getContext("2d");
-	  
 	  var bounds = canvas.getBoundingClientRect();
-      mouse.x = e.pageX - bounds.left - scrollX;
+      mouse.x = e.pageX - bounds.left - scrollX;		
       mouse.y = e.pageY - bounds.top - scrollY;
 	  mouse.x /=  bounds.width; 
       mouse.y /=  bounds.height; 
   	  mouse.x *= canvas.width;
   	  mouse.y *= canvas.height;
 	
+	 drawFunction(mouse.x,mouse.y,x,y)
+	}
+	function drawFunction(mouse_x,mouse_y,x,y){
+      // console.log(mouse_x,mouse_y)
+
+	  var ctx = canvas.getContext("2d");
 	  ctx.fillStyle = "#FF0000";
 	  ctx.beginPath();
-	  ctx.arc(mouse.x, mouse.y, 1, 0, 2 * Math.PI);
-	  ctx.stroke();
-
-		 
-}
+	  ctx.arc(mouse_x, mouse_y, 3, 0, 2 * Math.PI);
+	  ctx.strokeStyle = strokeColor;
+	  if(penDown){
+	  	ctx.stroke();
+	  }	 
+	  mouseFunction(x,y)
+	}
+	function mouseFunction(x,y){
+		x=x-15
+		y=y-15
+		var d = document.getElementById('mouse');
+		d.style.position = "absolute";
+		d.style.left = x+'px';
+		d.style.top = y+'px';
+	}
 
 	function clearCoor() {
 	  document.getElementById("demo").innerHTML = "";
+	}
+	function keyFunction(e){
+		console.log('key has been pressed')
+		document.getElementById("demo").innerHTML = e.keyCode
+		if(e.keyCode==66){
+			color='blue'
+			strokeColor='blue'
+			console.log(strokeColor)
+		}
+		if(e.keyCode==71){
+			color='green'
+			strokeColor='green'
+		}
+		if(e.keyCode==82){
+			color='red'
+			strokeColor='red'
+		}
+		if(e.keyCode==89){
+			color='yellow'
+			strokeColor='yellow'
+		}	
+		if(e.keyCode==38){
+			penDown=true
+		}	
+		if(e.keyCode==40){
+			penDown=false
+		}	
+		if(e.keyCode==32){
+			canvas.width = canvas.width;
+	  		var context = canvas.getContext("2d");
+			context.clearRect(0, 0, canvas.width, canvas.height);
+		}	
+
+
 	}
 </script>
 </body>

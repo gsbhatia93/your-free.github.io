@@ -1,8 +1,14 @@
 
 
 
-/*#myCanvas{
-	width:80%;
-	height:80%;
-	border:1px solid;
-}*/
+#myCanvas{
+   cursor:none;
+   width:80%;
+   height:80%;
+}
+
+.rectangle {
+  height: 30px;
+  width: 30px;
+  background-color:red;
+}
