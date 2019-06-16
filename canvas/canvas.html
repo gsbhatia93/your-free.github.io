@@ -18,38 +18,46 @@
   		<button onclick="colorSelectorFunction()">Submit</button>
 	
 <script>
-console.log('--loading again...')	
 var canvas = document.getElementById("myCanvas");
+
+function first(){
+  if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+	canvas.style.width="80%";
+	canvas.style.height="80%";
+
+	}
+
+  window.setInterval(first, 2000);
+ }
+first()
 
 // Prevent scrolling when touching the canvas
 document.body.addEventListener("touchstart", function (e) {
   console.log('touch event')	
 }, false);
 
-document.body.addEventListener("touchend", function (e) {
-	console.log('touch end')
-}, false);
 document.body.addEventListener("touchmove", function (e) {
-	//  var rect = canvas.getBoundingClientRect();
-    //x = e.touches[0].clientX - rect.left,
-    //y = e.touches[0].clientY - rect.top
-    //drawFunction(x,y)
     touchFunction(e)
-  console.log('touch move')
 }, false);
 
 document.addEventListener('keydown', keyFunction);
 
-function colorSelectorFunction(){
-	var value = document.getElementById('new-color-value').value
-	console.log(value)
-	
-}
 strokeColor="#FF0000"
 penDown = true
 myCanvas.width = 1024;
 myCanvas.height = 1024;
+window.addEventListener("orientationchange", function() {
+  //console.log("the orientation of the device is now " + screen.orientation.angle);
+  var context = canvas.getContext("2d");
+  context.clearRect(0, 0, canvas.width, canvas.height);
 
+});
+
+
+function colorSelectorFunction(){
+	var value = document.getElementById('new-color-value').value
+	strokeColor = value
+}
 const mouse = {
     x : 0, y : 0,  // coordinates
     lastX : 0, lastY : 0, // last frames mouse position 
@@ -73,7 +81,6 @@ const mouse = {
 	 drawFunction(mouse_x,mouse_y,x,y)
 	}
 	function myFunction(e) {
-		
 	  var x = e.clientX;
 	  var y = e.clientY;
 	  var coor = "Coordinates: (" + x + "," + y + ")";
@@ -86,16 +93,16 @@ const mouse = {
       mouse.y /=  bounds.height; 
   	  mouse.x *= canvas.width;
   	  mouse.y *= canvas.height;
-	
+		
 	 drawFunction(mouse.x,mouse.y,x,y)
 	}
 	function drawFunction(mouse_x,mouse_y,x,y){
       // console.log(mouse_x,mouse_y)
-
 	  var ctx = canvas.getContext("2d");
 	  ctx.fillStyle = "#FF0000";
 	  ctx.beginPath();
 	  ctx.arc(mouse_x, mouse_y, 3, 0, 2 * Math.PI);
+	  console.log(strokeColor)
 	  ctx.strokeStyle = strokeColor;
 	  if(penDown){
 	  	ctx.stroke();
